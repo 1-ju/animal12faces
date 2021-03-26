@@ -5,9 +5,11 @@ body {
 
 .file-upload {
     padding: 15% 3%;
+    width: fit-content;
+    height: fit-content;
     margin: 0 auto;
     border-radius: 10px;
-    border: solid 1.5px #f6f7fa;
+    border: solid 1.5px #87ABFA;
     background-color: #f6f7fa;
 }
 
@@ -89,6 +91,7 @@ body {
   max-width: 200px;
   margin: auto;
   padding: 20px;
+    border-radius: 2em;
 }
 
 .remove-image {
@@ -200,10 +203,24 @@ body {
 }
 
 .justify-content-center {
+    background-color: #FAE398;
+    font-size: 10px;
     justify-content: center!important;
-    background-color: #6c757d;
+    height: 30px;
+    border-radius: 1em;
+    color: #fd7e14;
 }
-.result-Messege{
+.result-Messege {
     font-size: 2rem;
-    text-decoration-style: tvN _Medium;
+    font-weight: bold;
+    color: #87ABFA;
+}
+.ad-banner{
+    width : 320px;
+    margin: 0 auto;
+}
+.justify-content-center{
+    margin: 0 auto;
+    background-color: #ffffff;
+    font-size: 10px;
 }
