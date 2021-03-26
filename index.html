@@ -54,8 +54,8 @@
         </nav>
 
         <section class="section">
-            <h1 class="title">열두 동물</h1>
-            <h2 class="subtitle">나의 심장에 숨어있는 동물을 찾아보아요!</h2>
+            <h1 class="title">나한테서 어떤 동물이 보이니</h1>
+            <h2 class="subtitle">12지간 동물들 중에 나랑 가장 닮은 동물은 어떤 동물일까?</h2>
         </section>
         <script
             class="jsbin"
@@ -78,7 +78,7 @@
                     accept="image/*"
                 />
                 <div class="drag-text">
-                    <h3 class="upload-text">Drag your file(.jpg)</h3>
+                    <h3 class="upload-text">Drag and drop your file(.jpg)</h3>
                 </div>
             </div>
 
@@ -91,7 +91,8 @@
                     <div class="addthis_inline_share_toolbox_atfe">결과공유하기!</div>
 
                     <button type="button" onclick="removeUpload()" class="remove-image">
-                        Remove <span class="image-title">Uploaded Image</span>
+                        <!--Remove <span class="image-title">Uploaded Image</span>-->
+                        다른 사진으로 찾기
                     </button>
                 </div>
             </div>
@@ -182,6 +183,9 @@
                 $('.image-upload-wrap').removeClass('image-dropping');
             });
         </script>
+                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-605e01459632dec1"></script>
+
         <script type="text/javascript">
             // More API functions here:
             // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
@@ -290,11 +294,9 @@
                     }
                 }
             }
+            
         </script>
-        <script
-            type="text/javascript"
-            src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-605e01459632dec1"
-        ></script>
+
     </body>
 
     <!-- const classPrediction =
