@@ -209,9 +209,9 @@ body {
 }
 .bar-container{
     width: 80%;
-    padding-right: var(--bs-gutter-x,.75rem);
- padding-left: 0; 
-    margin-right: 30px;
+    
+    padding-left: 0; 
+   
     float: right;
     /* margin-left: 30px; */
     /*left: 60px;*/
