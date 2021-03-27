@@ -4,7 +4,6 @@
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <!-- Go to www.addthis.com/dashboard to customize your tools -->
-        
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -20,7 +19,7 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">십이지간동물상</a>
+                <a class="navbar-brand" href="#" style="font-family:'hanna';">[similar animal]</a>
                 <button
                     class="navbar-toggler"
                     type="button"
@@ -54,8 +53,10 @@
         </nav>
 
         <section class="section">
-            <h1 class="title">나한테서 어떤 동물이 보이니</h1>
-            <h2 class="subtitle">12지간 동물들 중에 나랑 가장 닮은 동물은 어떤 동물일까?</h2>
+            <h1 class="title">
+                <p style="font-family:'Jeju Myeongjo';">나한테서 어떤 동물이 보이니</p></h1>
+            <h2 class="subtitle">
+                <p style="font-family:'Jeju Myeongjo';">12지간 동물들 중에 나랑 가장 닮은 동물은 어떤 동물일까?</p></h2>
         </section>
         <script
             class="jsbin"
@@ -78,16 +79,24 @@
                     accept="image/*"
                 />
                 <div class="drag-text">
-                    <h3 class="upload-text">Drag and drop your file(.jpg)</h3>
+                    <h3 class="upload-text">Upload your Image(.jpg)</h3>
                 </div>
             </div>
 
             <div class="file-upload-content">
                 <img class="file-upload-image" id="face-image" src="#" alt="your image" />
                 <p class="result-Messege"></p>
-                <div id="label-container"></div>
+                <div id="label-container" class="d-flex flex-column justify-content-around"></div>
+                <div id="loading" class="animated bounce">
+                <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                    <span class="sr-only"></span>
+                </div>
+                <p class="text-center">AI가 당신의 동물상을 분석중입니다.</p>
+            </div>
                 <div class="image-title-wrap">
                     <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                    
+
                     <div class="addthis_inline_share_toolbox_atfe">결과공유하기!</div>
 
                     <button type="button" onclick="removeUpload()" class="remove-image">
@@ -97,25 +106,37 @@
                 </div>
             </div>
         </div>
-        <div class = "ad-banner">
+        <div class="ad-banner">
             <ins
-            class="kakao_ad_area"
-            style="display: none;"
-            data-ad-unit="DAN-9dRP2c7eBffPi9ys"
-            data-ad-width="320"
-            data-ad-height="100"
-        ></ins>
-            
+                class="kakao_ad_area"
+                style="display: none;"
+                data-ad-unit="DAN-9dRP2c7eBffPi9ys"
+                data-ad-width="320"
+                data-ad-height="100"
+            ></ins>
         </div>
-        
+
         <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
         <div id="disqus_thread"></div>
-        <footer class = "footer pt-5 container d-flex justify-content-center">
+        <ins
+                class="kakao_ad_area"
+                style="display: none;"
+                data-ad-unit="DAN-gTAkw5dHyC5sORF9"
+                data-ad-width="320"
+                data-ad-height="50"
+            ></ins>
+            <script
+                type="text/javascript"
+                src="//t1.daumcdn.net/kas/static/ba.min.js"
+                async
+            ></script>
+        <footer class="footer pt-5 container d-flex justify-content-center">
+            
             <div>
                 <p>
                     &copy; Onju 2021. All rights Reserved.
                 </p>
-            </div> 
+            </div>
         </footer>
         <script>
             /**
@@ -154,7 +175,7 @@
 
                     reader.onload = function (e) {
                         $('.image-upload-wrap').hide();
-
+                        $('#loading').show();
                         $('.file-upload-image').attr('src', e.target.result);
                         $('.file-upload-content').show();
 
@@ -165,6 +186,7 @@
                     init().then(() => {
                         console.log('hello');
                         predict();
+                        $('#loading').hide();
                     });
                 } else {
                     removeUpload();
@@ -183,8 +205,11 @@
                 $('.image-upload-wrap').removeClass('image-dropping');
             });
         </script>
-                <!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-605e01459632dec1"></script>
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <script
+            type="text/javascript"
+            src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-605e01459632dec1"
+        ></script>
 
         <script type="text/javascript">
             // More API functions here:
@@ -216,7 +241,6 @@
 
             // run the webcam image through the image model
             async function predict() {
-                // predict can take in an image, video or canvas html element
                 var image = document.getElementById('face-image');
                 const prediction = await model.predict(image, false);
                 prediction.sort((a, b) => parseFloat(b.probability) - parseFloat(a.probability));
@@ -273,11 +297,10 @@
                     } else {
                         barWidth = '2%';
                     }
-                    var labelTitle;
-   
+
                     var label =
                         "<div class='animal-label d-flex align-items-center'>" +
-                        prediction[i].className +
+                        (i+1)+". "+prediction[i].className +
                         '</div>';
                     var bar =
                         "<div class='bar-container position-relative container'><div class='" +
@@ -290,13 +313,13 @@
                         Math.round(prediction[i].probability.toFixed(2) * 100) +
                         '%</span></div></div>';
                     if (i <= 4) {
-                        labelContainer.childNodes[i].innerHTML = label + bar;
+                        
+                            labelContainer.childNodes[i].innerHTML = label + bar;
+                        
                     }
                 }
             }
-            
         </script>
-
     </body>
 
     <!-- const classPrediction =
